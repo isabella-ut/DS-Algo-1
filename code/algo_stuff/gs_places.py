@@ -38,25 +38,25 @@ def gs_match(students_preferences, prof_preferences, places):
 
     return matches
 
-student_pref = {
-    'A': ['a', 'b', 'c'],
-    'B': ['a', 'c', 'b'],
-    'C': ['b', 'a', 'c']
-}
-
-prof_pref = {
-    'a': ['B', 'A', 'C'],
-    'b': ['A', 'C', 'B'],
-    'c': ['C', 'B', 'A'],
-    'd': []
-}
-
-place = {
-    'a': 3,
-    'b': 2,
-    'c': 2
-}
-
-matches = gs_match(students_preferences=student_pref, prof_preferences=prof_pref, places=place)
-print(matches)
+# student_pref = {
+#     'A': ['a', 'b', 'c'],
+#     'B': ['a', 'c', 'b'],
+#     'C': ['b', 'a', 'c']
+# }
+#
+# prof_pref = {
+#     'a': ['B', 'A', 'C'],
+#     'b': ['A', 'C', 'B'],
+#     'c': ['C', 'B', 'A'],
+#     'd': []
+# }
+#
+# place = {
+#     'a': 3,
+#     'b': 2,
+#     'c': 2
+# }
+#
+# matches = gs_match(students_preferences=student_pref, prof_preferences=prof_pref, places=place)
+# print(matches)
 

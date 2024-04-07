@@ -68,3 +68,45 @@ def preferences(students_profs):
     
     # Return the dictionary
     return preferences
+
+
+
+
+
+
+
+# Function to verify stability of the algorithms
+# This is not working 100% yet
+
+def verify_stability(student_preferences, prof_preferences, matches, places):
+    # Check for each student
+    for student, prefs in student_preferences.items():
+        matched_prof = None
+        for prof in prefs:
+            if student in matches.get(prof, []):
+                matched_prof = prof
+                break
+        if matched_prof is None:
+            continue  # Student is unmatched, no stability issue here
+        # Check if there's a higher-ranked prof that would prefer this student
+        for higher_ranked_prof in prefs[:prefs.index(matched_prof)]:
+            # Check if higher-ranked prof would prefer this student over current matches
+            current_matches = matches.get(higher_ranked_prof, [])
+            if not current_matches or prof_preferences[higher_ranked_prof].index(student) < min(
+                    prof_preferences[higher_ranked_prof].index(s) for s in current_matches):
+                print(f"Instability found: {student} prefers {higher_ranked_prof} over {matched_prof}")
+                return False
+
+    # Check for each professor's preference stability
+    for prof, current_matches in matches.items():
+        if len(current_matches) < places[prof]:
+            continue  # Professor hasn't filled their quota, no issue here
+        least_preferred = min(current_matches, key=lambda x: prof_preferences[prof].index(x))
+        for student in [s for s in prof_preferences[prof] if s not in current_matches]:
+            if prof_preferences[prof].index(student) < prof_preferences[prof].index(least_preferred):
+                print(f"Instability found: {prof} would prefer {student} over {least_preferred}")
+                return False
+
+    print("No instability found. The matching is stable.")
+    return True
+
