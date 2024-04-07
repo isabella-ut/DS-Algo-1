@@ -15,8 +15,8 @@ student_preferences = functions.preferences(data)
 prof_preferences = functions.preferences(data[::-1])
 
 # Look at the results. It should be of this structure: student_#: [prof_#, prof_#, prof_#] and vice versa for the profs.
-# print(student_preferences)
-# print(prof_preferences)
+#print(student_preferences)
+#print(prof_preferences)
 
 
 # Either run with defined sets student_pref and prof_pref as below, or pull from "data" (create_data output).
